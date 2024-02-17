@@ -89,4 +89,6 @@ app.post("/api/upload", upload.single("uploadedImage"), async (req, res) => {
   }
 });
 
-module.exports = app;
+app.listen(4000, () => {
+  console.log("Server is up and running on port 4000");
+});
