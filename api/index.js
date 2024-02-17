@@ -37,7 +37,10 @@ app.post("/api/upload", upload.single("uploadedImage"), async (req, res) => {
       await Promise.all(
         convertedResult.map(async (file, index) => {
           // Perform OCR on the grayscale image
-          const grayscaleImageBuffer = await sharp(file).grayscale().negate().toBuffer();
+          const grayscaleImageBuffer = await sharp(file)
+            .grayscale()
+            .negate()
+            .toBuffer();
           console.log("Processing Page: %d", index);
           const {
             data: { text },
@@ -89,7 +92,11 @@ app.post("/api/upload", upload.single("uploadedImage"), async (req, res) => {
   }
 });
 
-const port = parseInt(process.env.PORT) || 8080;
-app.listen(port, () => {
-  console.log(`helloworld: listening on port ${port}`);
+app.get("/api/upload"),
+  async (req, res) => {
+    return res.json({ message: "Alive" });
+  };
+
+app.listen(4000, () => {
+  console.log("Server is up and running on port 4000");
 });
