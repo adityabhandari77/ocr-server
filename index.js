@@ -89,6 +89,7 @@ app.post("/api/upload", upload.single("uploadedImage"), async (req, res) => {
   }
 });
 
-app.listen(4000, () => {
-  console.log("Server is up and running on port 4000");
+const port = parseInt(process.env.PORT) || 8080;
+app.listen(port, () => {
+  console.log(`helloworld: listening on port ${port}`);
 });
